@@ -8,5 +8,5 @@
 }
 
 .progress {
-	transition: width 0.1s linear;
+	transition: width 0.25s ease-in-out;
 }
