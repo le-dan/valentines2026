@@ -9,7 +9,7 @@ export default function AnswerButtons(props: { onAnswer: (answer: string) => voi
 			transition={{ duration: 0.5 }}
 		>
 			{props.buttons.map((button, index) => (
-				<button key={index} className="bg-(--primary) h-10 text-white px-6 py-2 rounded-lg transition" onClick={() => props.onAnswer(button)}>
+				<button key={index} className="bg-(--primary) h-16 text-white px-6 py-2 rounded-lg transition" onClick={() => props.onAnswer(button)}>
 					{button}
 				</button>
 			))}

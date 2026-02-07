@@ -12,6 +12,7 @@ function App() {
 	const [showButtons, setShowButtons] = useState(false);
 
 	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+	const [fadeOut, setFadeOut] = useState(false);
 	const questionSet = [
 		{
 			question: "What type of cat is this called?",
@@ -36,23 +37,49 @@ function App() {
 		},
 	];
 
+	const handleCorrectAnswer = (answer) => {
+		setFadeOut(true);
+		setTimeout(() => {
+			setProgress(progress + 25);
+			setCurrentQuestionIndex(currentQuestionIndex + 1);
+			setShowImage(false);
+			setShowButtons(false);
+			setFadeOut(false);
+
+			if (currentQuestionIndex + 1 < questionSet.length) {
+				if (!questionSet[currentQuestionIndex + 1].image) {
+					setTimeout(() => {
+						setShowButtons(true);
+					}, 1000);
+				}
+			}
+		}, 300);
+	};
+
 	return (
 		<>
 			<ProgressBar progress={progress} />
-			<div ref={ref} className="text-center mt-15 text-(--text-primary) text-3xl font-extralight">
+			<motion.div
+				key={currentQuestionIndex}
+				ref={ref}
+				className="text-center mt-5 text-(--text-primary) text-3xl font-extralight"
+				initial={{ opacity: 1 }}
+				animate={{ opacity: fadeOut ? 0 : 1 }}
+				transition={{ duration: 0.3 }}
+			>
 				{questionSet[currentQuestionIndex].question.split("").map((letter, index) => (
 					<motion.span
-						key={index}
+						key={`${currentQuestionIndex}-${index}`}
 						initial={{ opacity: 0 }}
-						animate={isInView ? { opacity: 1 } : {}}
+						animate={!fadeOut ? { opacity: 1 } : { opacity: 0 }}
 						transition={{ duration: 0.25, delay: index * 0.05 }}
 						onAnimationComplete={index === questionSet[currentQuestionIndex].question.length - 1 ? () => setShowImage(true) : undefined}
 					>
 						{letter}
 					</motion.span>
 				))}
-			</div>
-			{questionSet[currentQuestionIndex].image && showImage && (
+			</motion.div>
+			{questionSet[currentQuestionIndex].image && showImage && !fadeOut && (
 				<motion.img
 					src={questionSet[currentQuestionIndex].image}
 					className="w-3/4 mx-auto my-10 rounded-lg"
@@ -62,21 +89,11 @@ function App() {
 					onAnimationComplete={() => setShowButtons(true)}
 				/>
 			)}
-			{showButtons && (
+			{showButtons && !fadeOut && (
 				<AnswerButtons
 					onAnswer={(answer) => {
 						if (answer === questionSet[currentQuestionIndex].correctAnswer) {
-							setProgress(progress + 25);
-							setCurrentQuestionIndex(currentQuestionIndex + 1);
-							setShowImage(false);
-							setShowButtons(false);
-
-							if (!questionSet[currentQuestionIndex + 1].image) {
-								console.log("No image for this question, showing buttons directly.");
-								setTimeout(() => {
-									setShowButtons(true);
-								}, 1000);
-							}
+							handleCorrectAnswer(answer);
 						} else {
 							setProgress(progress);
 						}
