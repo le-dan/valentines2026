@@ -11,7 +11,7 @@ export default function AnswerButtons(props: { onAnswer: (answer: string) => voi
 			{props.buttons.map((button, index) => (
 				<button
 					key={index}
-					className="bg-(--primary) h-16 text-white px-6 py-2 rounded-lg transition disabled:opacity-50"
+					className="bg-(--primary) h-16 text-white px-6 py-2 rounded-lg transition disabled:opacity-50 border border-pink-700"
 					onClick={() => props.onAnswer(button)}
 					disabled={props.shake}
 				>
