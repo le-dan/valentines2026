@@ -138,7 +138,7 @@ function App() {
 						</motion.div>
 					) : (
 						<motion.div className="flex flex-col h-full gap-10 relative">
-							<Confetti width={width} height={height} numberOfPieces={50} opacity={0.5} />
+							<Confetti width={width} height={height} numberOfPieces={50} />
 							<img
 								src="./src/assets/trattoria.jpg"
 								className="absolute left-1/2 top-0 -translate-x-1/2 w-screen max-h-[40vh] object-cover rounded-md pointer-events-none"
