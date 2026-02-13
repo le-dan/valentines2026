@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import "./App.css";
 import ProgressBar from "./components/ProgressBar";
 import { AnimatePresence, motion } from "motion/react";
+import type { Easing } from "motion/react";
 import AnswerButtons from "./components/AnswerButtons";
 import { useWindowSize } from "react-use";
 import Confetti from "react-confetti";
@@ -94,7 +95,7 @@ function App() {
 			duration: 0.3,
 			repeat: Infinity,
 			repeatType: "reverse" as const,
-			ease: "easeOut",
+			ease: "easeOut" as Easing,
 		},
 	};
 
