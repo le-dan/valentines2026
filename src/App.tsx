@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import "./App.css";
 import ProgressBar from "./components/ProgressBar";
 import { AnimatePresence, motion } from "motion/react";
@@ -21,6 +21,15 @@ function App() {
 
 	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 	const [fadeOut, setFadeOut] = useState(false);
+	const [excitementPhraseIndex, setExcitementPhraseIndex] = useState(0);
+
+	const excitementPhrases = [
+		"yipppieee!!!",
+		"woohoo!!!",
+		"OMG YES!!!",
+		"YESSS!!!",
+		"so excited!!!",
+	];
 	const questionSet = [
 		{
 			question: "What type of cat is this called?",
@@ -95,10 +104,20 @@ function App() {
 		},
 	};
 
+	// Cycle through excitement phrases
+	useEffect(() => {
+		if (!showValentineQuestion && questionsCompleted) {
+			const interval = setInterval(() => {
+				setExcitementPhraseIndex((prev) => (prev + 1) % excitementPhrases.length);
+			}, 1500);
+			return () => clearInterval(interval);
+		}
+	}, [showValentineQuestion, questionsCompleted]);
+
 	return (
 		<>
 			{questionsCompleted ? (
-				<AnimatePresence>
+				<AnimatePresence mode="wait">
 					{showValentineQuestion ? (
 						<motion.div
 							key={"valentine-question"}
@@ -131,18 +150,21 @@ function App() {
 							</div>
 						</motion.div>
 					) : (
-						<>
-							<motion.div
-								key={"celebration"}
-								transition={bounceTransition}
-								animate={{ y: [0, -125] }}
-								className="h-full flex flex-col items-center justify-center text-(--text-primary) text-4xl font-extralight"
-							>
-								yipppieee!!!
-								<img src="./src/assets/jumping-gatito.gif" className="w-full mx-auto rounded-lg" />
-							</motion.div>
-							<div className="text-center font-bold text-5xl text-(--text-primary)">dan le</div>
-						</>
+						<motion.div className="flex flex-col h-full justify-center gap-10">
+							<div>
+								<motion.div
+									key={"celebration"}
+									transition={bounceTransition}
+									animate={{ y: [0, -150] }}
+									className="flex flex-col items-center justify-center text-(--text-primary) text-3xl font-extralight"
+								>
+									{excitementPhrases[excitementPhraseIndex]}
+									<img src="./src/assets/jumping-gatito.gif" className="w-full mx-auto rounded-lg" />
+								</motion.div>
+
+							</div>
+							<div className="text-(--text-primary) text-5xl text-center">see you on<br></br><span className="text-6xl">valentines day 💕</span><br></br><span className="text-lg text-(--text-primary)/75">from xiaomimi (me)</span></div>
+						</motion.div>
 					)}
 				</AnimatePresence>
 			) : (
