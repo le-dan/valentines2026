@@ -23,13 +23,7 @@ function App() {
 	const [fadeOut, setFadeOut] = useState(false);
 	const [excitementPhraseIndex, setExcitementPhraseIndex] = useState(0);
 
-	const excitementPhrases = [
-		"yipppieee!!!",
-		"woohoo!!!",
-		"OMG YES!!!",
-		"YESSS!!!",
-		"so excited!!!",
-	];
+	const excitementPhrases = ["yipppieee!!!", "woohoo!!!", "OMG YES!!!", "YESSS!!!", "so excited!!!"];
 	const questionSet = [
 		{
 			question: "What type of cat is this called?",
@@ -112,7 +106,7 @@ function App() {
 			}, 1500);
 			return () => clearInterval(interval);
 		}
-	}, [showValentineQuestion, questionsCompleted]);
+	}, [showValentineQuestion, questionsCompleted, excitementPhrases.length]);
 
 	return (
 		<>
@@ -127,7 +121,6 @@ function App() {
 							transition={{ duration: 0.5 }}
 							className="h-full flex flex-col"
 						>
-							<Confetti width={width} height={height} numberOfPieces={50} opacity={0.5} />
 							<div className="h-full text-center mt-5 text-(--text-primary) flex flex-col items-center gap-12">
 								<div className="text-5xl font-extralight flex flex-col gap-4">
 									will you be my <span className="font-bold">Valentine 💖?</span>
@@ -135,40 +128,43 @@ function App() {
 								<img src="./src/assets/cat-woof.gif" className="rounded-lg w-full" />
 								<div className="mt-auto flex gap-2 items-center">
 									<button
-										className="bg-(--primary) text-6xl py-3 text-white px-6 rounded-xl transition disabled:opacity-50 border border-pink-700"
+										className="bg-(--primary) text-6xl py-3 text-white px-12 rounded-xl transition disabled:opacity-50 border border-pink-700"
 										onClick={() => setShowValentineQuestion(false)}
 									>
 										YES
-									</button>
-									<button
-										className="bg-(--primary) h-fit text-[10px] text-white px-2 py-1 rounded-sm transition disabled:opacity-50 border border-pink-700"
-										disabled={true}
-									>
-										no
 									</button>
 								</div>
 							</div>
 						</motion.div>
 					) : (
-						<motion.div className="flex flex-col h-full justify-center gap-10">
-							<div>
+						<motion.div className="flex flex-col h-full gap-10 relative">
+							<Confetti width={width} height={height} numberOfPieces={50} opacity={0.5} />
+							<img
+								src="./src/assets/trattoria.jpg"
+								className="absolute left-1/2 top-0 -translate-x-1/2 w-screen max-h-[40vh] object-cover rounded-md pointer-events-none"
+							/>
+							<div className="h-full flex-col flex justify-end">
 								<motion.div
 									key={"celebration"}
 									transition={bounceTransition}
-									animate={{ y: [0, -150] }}
-									className="flex flex-col items-center justify-center text-(--text-primary) text-3xl font-extralight"
+									animate={{ y: [100, -25] }}
+									className="flex flex-col items-center text-pink-400 text-3xl font-bold"
 								>
 									{excitementPhrases[excitementPhraseIndex]}
 									<img src="./src/assets/jumping-gatito.gif" className="w-full mx-auto rounded-lg" />
 								</motion.div>
-
+								<div className="text-(--text-primary) text-4xl text-center">
+									see you on<br></br>
+									<span className="text-[40px] font-bold">valentines day 💕</span>
+									<br></br>
+									<span className="text-lg text-(--text-primary)/75">from xiaomimi (me)</span>
+								</div>
 							</div>
-							<div className="text-(--text-primary) text-5xl text-center">see you on<br></br><span className="text-6xl">valentines day 💕</span><br></br><span className="text-lg text-(--text-primary)/75">from xiaomimi (me)</span></div>
 						</motion.div>
 					)}
 				</AnimatePresence>
 			) : (
-				<div className="h-full flex flex-col gap-3">
+				<div className="h-full flex flex-col gap-3 min-h-0">
 					<ProgressBar progress={progress} />
 					<motion.div
 						key={currentQuestionIndex}
@@ -195,7 +191,7 @@ function App() {
 					{questionSet[currentQuestionIndex].image && showImage && !fadeOut && (
 						<motion.img
 							src={questionSet[currentQuestionIndex].image}
-							className="w-9/10 mx-auto my-10 rounded-lg"
+							className="w-full mx-auto my-6 rounded-lg"
 							initial={{ opacity: 0, y: 50 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5 }}

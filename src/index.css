@@ -1,7 +1,18 @@
 @import "tailwindcss";
 
 :root {
-	font-family: -apple-system, blinkmacsystemfont, "Segoe UI", roboto, oxygen, ubuntu, cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+	font-family:
+		cursive,
+		-apple-system,
+		blinkmacsystemfont,
+		"Segoe UI",
+		roboto,
+		oxygen,
+		ubuntu,
+		cantarell,
+		"Open Sans",
+		"Helvetica Neue",
+		sans-serif;
 	line-height: 1.5;
 	font-weight: 400;
 
@@ -17,16 +28,23 @@
 	--text-primary: #b94e80;
 }
 
+* {
+	box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+	height: 100%;
+	margin: 0;
+}
+
 html {
-	height: 100vh;
 	width: 100vw;
 }
 
 body {
-	height: 100%;
 	width: 100%;
-	margin: 0;
-	display: flex;
-	flex-direction: column;
-	padding: 2rem;
+
+	padding: 3rem;
 }
