@@ -93,7 +93,7 @@ function App() {
 		y: {
 			duration: 0.3,
 			repeat: Infinity,
-			repeatType: "reverse",
+			repeatType: "reverse" as const,
 			ease: "easeOut",
 		},
 	};
