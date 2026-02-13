@@ -199,7 +199,7 @@ function App() {
 					{questionSet[currentQuestionIndex].image && showImage && !fadeOut && (
 						<motion.img
 							src={questionSet[currentQuestionIndex].image}
-							className="w-3/4 mx-auto my-6 rounded-lg"
+							className="w-1/2 mx-auto my-2 rounded-lg"
 							initial={{ opacity: 0, y: 50 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5 }}
