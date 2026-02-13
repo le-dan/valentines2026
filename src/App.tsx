@@ -155,9 +155,9 @@ function App() {
 								</motion.div>
 								<div className="text-(--text-primary) text-4xl text-center">
 									see you on<br></br>
-									<span className="text-[40px] font-bold">valentines day 💕</span>
+									<span className="text-[40px] font-bold">valentines day 💕💕💕</span>
 									<br></br>
-									<span className="text-lg text-(--text-primary)/75">from xiaomimi (me)</span>
+									<span className="text-lg text-(--text-primary)/75">from xiaomimi 😽 (me)</span>
 								</div>
 							</div>
 						</motion.div>
