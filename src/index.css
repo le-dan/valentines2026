@@ -1,18 +1,7 @@
 @import "tailwindcss";
 
 :root {
-	font-family:
-		cursive,
-		-apple-system,
-		blinkmacsystemfont,
-		"Segoe UI",
-		roboto,
-		oxygen,
-		ubuntu,
-		cantarell,
-		"Open Sans",
-		"Helvetica Neue",
-		sans-serif;
+	font-family: -apple-system, blinkmacsystemfont, "Segoe UI", roboto, oxygen, ubuntu, cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 	line-height: 1.5;
 	font-weight: 400;
 
