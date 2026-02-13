@@ -23,7 +23,7 @@ function App() {
 	const [fadeOut, setFadeOut] = useState(false);
 	const [excitementPhraseIndex, setExcitementPhraseIndex] = useState(0);
 
-	const excitementPhrases = ["yipppieee!!!", "woohoo!!!", "OMG YES!!!", "YESSS!!!", "so excited!!!"];
+	const excitementPhrases = ["yipppieee!!!", "woohoo!!!", "OMG YES!!!", "YESSS!!!", "so excited!!!", "🌹", "trattoria here we come!!!"];
 	const questionSet = [
 		{
 			question: "What type of cat is this called?",
@@ -148,7 +148,7 @@ function App() {
 									key={"celebration"}
 									transition={bounceTransition}
 									animate={{ y: [100, -25] }}
-									className="flex flex-col items-center text-pink-400 text-3xl font-bold"
+									className="flex flex-col items-center text-pink-400 text-3xl font-bold text-center"
 								>
 									{excitementPhrases[excitementPhraseIndex]}
 									<img src="./src/assets/jumping-gatito.gif" className="w-full mx-auto rounded-lg" />
