@@ -6,6 +6,13 @@ import type { Easing } from "motion/react";
 import AnswerButtons from "./components/AnswerButtons";
 import { useWindowSize } from "react-use";
 import Confetti from "react-confetti";
+import munchkincatImg from "./assets/munchkincat.jpg";
+import headphonesImg from "./assets/headphones.png";
+import hashiraImg from "./assets/hashira2.jpg";
+import calendarImg from "./assets/calendar.png";
+import catWoofImg from "./assets/cat-woof.gif";
+import trattohttp from "./assets/trattoria.jpg";
+import jumpingGatitoImg from "./assets/jumping-gatito.gif";
 
 function App() {
 	const ref = useRef(null);
@@ -28,25 +35,25 @@ function App() {
 	const questionSet = [
 		{
 			question: "What type of cat is this called?",
-			image: "./src/assets/munchkincat.jpg",
+			image: munchkincatImg,
 			answers: ["Xiaomimi", "Siamese", "Persian", "Tabby"],
 			correctAnswer: "Xiaomimi",
 		},
 		{
 			question: "What song is this lyric from: 'Kissy face, kissy face sent to your phone, but I'm tryna kiss your lips for real?'",
-			image: "./src/assets/headphones.png",
+			image: headphonesImg,
 			answers: ["Seasons", "Wildflower", "Likey Likey", "APT"],
 			correctAnswer: "APT",
 		},
 		{
 			question: "Who is the love hashira in Demon Slayer?",
-			image: "./src/assets/hashira2.jpg",
+			image: hashiraImg,
 			answers: ["Shinobu Kocho", "Mitsuri Kanroji", "Kyojuro Rengoku", "Giyu Tomioka"],
 			correctAnswer: "Mitsuri Kanroji",
 		},
 		{
 			question: "What day is February 14th?",
-			image: "./src/assets/calendar.png",
+			image: calendarImg,
 			answers: ["Christmas", "Halloween", "Valentines", "Easter"],
 			correctAnswer: "Valentines",
 		},
@@ -126,7 +133,7 @@ function App() {
 								<div className="text-5xl font-extralight flex flex-col gap-4">
 									will you be my <span className="font-bold">Valentine 💖?</span>
 								</div>
-								<img src="./src/assets/cat-woof.gif" className="rounded-lg w-full" />
+								<img src={catWoofImg} className="rounded-lg w-full" />
 								<div className="mt-auto flex gap-2 items-center">
 									<button
 										className="bg-(--primary) text-6xl py-3 text-white px-12 rounded-xl transition disabled:opacity-50 border border-pink-700"
@@ -141,7 +148,7 @@ function App() {
 						<motion.div className="flex flex-col h-full gap-10 relative">
 							<Confetti width={width} height={height} numberOfPieces={50} />
 							<img
-								src="./src/assets/trattoria.jpg"
+								src={trattohttp}
 								className="absolute left-1/2 top-0 -translate-x-1/2 w-screen max-h-[40vh] object-cover rounded-md pointer-events-none"
 							/>
 							<div className="h-full flex-col flex justify-end">
@@ -152,7 +159,7 @@ function App() {
 									className="flex flex-col items-center text-pink-400 text-3xl font-bold text-center"
 								>
 									{excitementPhrases[excitementPhraseIndex]}
-									<img src="./src/assets/jumping-gatito.gif" className="w-full mx-auto rounded-lg" />
+									<img src={jumpingGatitoImg} className="w-full mx-auto rounded-lg" />
 								</motion.div>
 								<div className="text-(--text-primary) text-4xl text-center">
 									see you on<br></br>
